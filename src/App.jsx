@@ -1,12 +1,17 @@
-import './App.css'
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Write from "./components/Write";
 
 function App() {
-
   return (
-    <>
-      hello
-    </>
+    <div className="app">
+      <Router>
+        <Routes>
+          <Route path="/write" element={<Write />} />
+        </Routes>
+      </Router>
+    </div>
   )
 }
 
-export default App
+export default App;
