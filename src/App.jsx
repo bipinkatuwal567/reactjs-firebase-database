@@ -7,11 +7,11 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
-          <Route path="/write" element={<Write />} />
+          <Route path="/" element={<Write />} />
         </Routes>
       </Router>
     </div>
-  )
+  );
 }
 
 export default App;
