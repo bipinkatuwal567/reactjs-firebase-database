@@ -6,18 +6,20 @@ const Write = () => {
   const [inputValue1, setInputValue1] = useState("");
   const [inputValue2, setInputValue2] = useState("");
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     const db = getDatabase(app);
-    const newDocRef = push(ref(db, "nature/fruits"))
+    const newDocRef = push(ref(db, "nature/fruits"));
     set(newDocRef, {
       fruitName: inputValue1,
-      fruitDefinition: inputValue2
-    }).then(() => {
-      console.log("Data saved successfully");
-    }).catch(() => {
-      console.log("Unable to save data to db");
+      fruitDefinition: inputValue2,
     })
-  }
+      .then(() => {
+        console.log("Data saved successfully");
+      })
+      .catch(() => {
+        console.log("Unable to save data to db");
+      });
+  };
 
   return (
     <div className="write">
