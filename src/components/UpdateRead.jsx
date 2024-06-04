@@ -1,5 +1,5 @@
-import { get, getDatabase, ref } from "firebase/database";
-import React, { useState } from "react";
+import { get, getDatabase, ref, remove } from "firebase/database";
+import React, { useEffect, useState } from "react";
 import app from "../firebase-config";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 const UpdateRead = () => {
   const navigate = useNavigate();
   const [dataList, setDataList] = useState([]);
+
+  useEffect(() => {
+    handleClick();
+  }, [dataList]) 
 
   const handleClick = async () => {
     const db = getDatabase(app);
@@ -26,6 +30,18 @@ const UpdateRead = () => {
       console.log("Something went wrong");
     }
   };
+
+  const handleDelete = async (id) => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, "/nature/fruits/" + id);
+    const isDeleted = remove(dbRef);
+
+    if(isDeleted){
+      alert("Item deleted")
+    }else{
+      alert("Couldn't delete item")
+    }
+  }
   return (
     <>
       <Navbar />
@@ -41,6 +57,7 @@ const UpdateRead = () => {
                       {data.fruitId} : {data.fruitName} : {data.fruitDefinition}
                     </li>
                     <button onClick={() => navigate(`/update/${data.fruitId}`)}>Update</button>
+                    <button onClick={() => handleDelete(data.fruitId)}>Delete</button>
                   </div>
                 );
               })
