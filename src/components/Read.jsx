@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import app from "../firebase-config";
 import { get, getDatabase, ref } from "firebase/database";
+import Navbar from "./Navbar";
 
 const Read = () => {
   let [dataList, setDataList] = useState([]);
@@ -18,18 +19,21 @@ const Read = () => {
   };
   console.log("data: ", dataList);
   return (
-    <div>
-      <button onClick={fetchData}>Show data</button>
-      <ul>
-        {dataList.map((data, index) => {
-          return (
-            <li key={index}>
-              {data.fruitName} : {data.fruitDefinition}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <>
+      <Navbar />
+      <div className="container">
+        <button onClick={fetchData}>Show data</button>
+        <ul className="list">
+          {dataList.map((data, index) => {
+            return (
+              <li key={index}>
+                {data.fruitName} : {data.fruitDefinition}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
   );
 };
 

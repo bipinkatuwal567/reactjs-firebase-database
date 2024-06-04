@@ -1,6 +1,7 @@
 import { getDatabase, push, ref, set } from "firebase/database";
 import React, { useState } from "react";
 import app from "../firebase-config";
+import Navbar from "./Navbar";
 
 const Write = () => {
   const [inputValue1, setInputValue1] = useState("");
@@ -22,24 +23,27 @@ const Write = () => {
   };
 
   return (
-    <div className="write">
-      <input
-        type="text"
-        value={inputValue1}
-        onChange={(e) => {
-          setInputValue1(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        value={inputValue2}
-        onChange={(e) => {
-          setInputValue2(e.target.value);
-        }}
-      />
+    <>
+      <Navbar />
+      <div className="write container">
+        <input
+          type="text"
+          value={inputValue1}
+          onChange={(e) => {
+            setInputValue1(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          value={inputValue2}
+          onChange={(e) => {
+            setInputValue2(e.target.value);
+          }}
+        />
 
-      <button onClick={() => handleSubmit()}>Save Data</button>
-    </div>
+        <button onClick={() => handleSubmit()}>Save Data</button>
+      </div>
+    </>
   );
 };
 
