@@ -22,6 +22,7 @@ const Read = () => {
     <>
       <Navbar />
       <div className="container">
+        <h2>Read Data</h2>
         <button onClick={fetchData}>Show data</button>
         <ul className="list">
           {dataList.map((data, index) => {

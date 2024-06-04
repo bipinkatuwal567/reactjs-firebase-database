@@ -29,6 +29,10 @@ body{
   gap: 4rem;
 }
 
+.nav-list li{
+  cursor: pointer;
+}
+
 .container{
   position: absolute;
   top: 50%;
@@ -40,6 +44,7 @@ body{
   justify-content: center;
   align-items: center;
   gap: 15px;
+  min-width: 600px;
 }
 
 
@@ -54,6 +59,14 @@ li{
   justify-content: center;
   flex-direction: column;
   padding: 1rem;
+}
+
+.update-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 5px;
 }
 
 .card {
@@ -75,5 +88,6 @@ button{
   outline: none;
   border: none;
   font-size: 14px;
+  cursor: pointer;
 }
 

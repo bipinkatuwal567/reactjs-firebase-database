@@ -2,8 +2,10 @@ import { get, getDatabase, ref } from "firebase/database";
 import React, { useState } from "react";
 import app from "../firebase-config";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 const UpdateRead = () => {
+  const navigate = useNavigate();
   const [dataList, setDataList] = useState([]);
 
   const handleClick = async () => {
@@ -28,14 +30,18 @@ const UpdateRead = () => {
     <>
       <Navbar />
       <div className="container">
+        <h2>Update Data</h2>
         <button onClick={handleClick}>Show data</button>
         <ul>
           {dataList.length !== 0
             ? dataList.map((data) => {
                 return (
-                  <li key={data.fruitId}>
-                    {data.fruitId} : {data.fruitName} : {data.fruitDefinition}
-                  </li>
+                  <div className="update-list" key={data.fruitId}>
+                    <li>
+                      {data.fruitId} : {data.fruitName} : {data.fruitDefinition}
+                    </li>
+                    <button onClick={() => navigate(`/update/${data.fruitId}`)}>Update</button>
+                  </div>
                 );
               })
             : null}
